@@ -1,0 +1,27 @@
+# config.yaml
+training:
+  batch_size: 32                  # Number of samples per batch
+  epochs: 50                      # Number of epochs to train the model
+  learning_rate: 0.001            # Initial learning rate
+  weight_decay: 0.0001            # Weight decay for regularization
+  validation_split: 0.2           # Fraction of data to be used for validation
+
+model:
+  input_size: [128, 128, 3]       # Input image size (height, width, channels)
+  output_classes: 2               # Number of output classes (for classification)
+  backbone: "InceptionV3"         # Backbone architecture for feature extraction
+  dropout_rate: 0.5               # Dropout rate for regularization
+
+optimization:
+  optimizer: "Adam"               # Optimizer choice ('Adam', 'SGD', etc.)
+  momentum: 0.9                   # Momentum for SGD (if used)
+  scheduler: "CosineAnnealingLR"  # Learning rate scheduler
+  scheduler_params:
+    T_max: 10                     # Max number of iterations for annealing
+    eta_min: 1e-6                 # Minimum learning rate
+
+logging:
+  log_dir: "./logs"               # Directory to save logs
+  log_interval: 10                 # How often to log training progress
+  save_model: true                 # Save the best model during training
+  model_save_dir: "./models"      # Directory to save trained models
