@@ -30,27 +30,49 @@ This model is specifically designed to enhance segmentation performance in **liv
 
 UIGO/
 ├── README.md              # Project overview and instructions
+
 ├── LICENSE                # License details
+
 ├── requirements.txt       # Python dependencies
+
 ├── .gitignore             # Files and directories to ignore in git
+
 ├── data/
+
 │   └── utils.py           # Data preprocessing, augmentation utilities
+
 ├── models/
+
 │   ├── Segmentation.py        # Main hybrid UIGO model
+
 │   ├── Loss.py          # Inception, attention, convolutional modules
+
 │   └── GraviationalOptimization.py    # Gravitational Optimization Algorithm
+
 │   ├── train.py           # Training loop, model fitting
+
 │   ├── loss_functions.py  # Loss functions (e.g., Dice loss, focal loss)
+
 │   ├── metrics.py         # Evaluation metrics (e.g., IOU, Dice, AUC, precision, recall)
+
 │   └── scheduler.py       # Learning rate schedulers and callbacks
+
 ├── evaluation/
+
 │   ├── evaluate.py        # Testing and final evaluation pipeline
+
 │   └── visualize.py       # Prediction visualization and mask overlay
+
 ├── utils/
+
 │   └── helpers.py         # Logger, seed setting, config reader
+
 ├── configs/
+
 │   ├── config.yaml        # Hyperparameters, paths, batch size
+
 │   └── dataset.yaml       # Dataset splits and data sources
+
 
 
 
