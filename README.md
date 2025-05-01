@@ -28,11 +28,31 @@ This model is specifically designed to enhance segmentation performance in **liv
 
 ## 📁 Project Structure
 
-UIGO/ ├── README.md ├── LICENSE ├── requirements.txt ├── .gitignore │ ├── data/ │ ├── raw/ # Original medical images and labels │ ├── processed/ # Preprocessed data (resized, normalized) │ └── utils.py # Data preprocessing, augmentation │ ├── models/ │ ├── uigo_net.py # Main hybrid model │ ├── blocks.py # Inception, attention, convolutional modules │ └── optimization.py # Gravitational Optimization Algorithm │ ├── training/ │ ├── train.py # Training loop, model fitting │ ├── loss_functions.py # Dice loss, focal loss, etc. │ ├── metrics.py # IOU, Dice, AUC, precision, recall │ └── scheduler.py # Learning rate schedulers and callbacks │ ├── evaluation/ │ ├── evaluate.py # Testing and final evaluation pipeline │ └── visualize.py # Prediction visualization and mask overlay │ ├── utils/ │ └── helpers.py # Logger, seed setting, config reader │ └── configs/ ├── config.yaml # Hyperparameters, paths, batch size └── dataset.yaml # Dataset splits and data sources
+UIGO/
+├── README.md              # Project overview and instructions
+├── LICENSE                # License details
+├── requirements.txt       # Python dependencies
+├── .gitignore             # Files and directories to ignore in git
+├── data/
+│   └── utils.py           # Data preprocessing, augmentation utilities
+├── models/
+│   ├── Segmentation.py        # Main hybrid UIGO model
+│   ├── Loss.py          # Inception, attention, convolutional modules
+│   └── GraviationalOptimization.py    # Gravitational Optimization Algorithm
+│   ├── train.py           # Training loop, model fitting
+│   ├── loss_functions.py  # Loss functions (e.g., Dice loss, focal loss)
+│   ├── metrics.py         # Evaluation metrics (e.g., IOU, Dice, AUC, precision, recall)
+│   └── scheduler.py       # Learning rate schedulers and callbacks
+├── evaluation/
+│   ├── evaluate.py        # Testing and final evaluation pipeline
+│   └── visualize.py       # Prediction visualization and mask overlay
+├── utils/
+│   └── helpers.py         # Logger, seed setting, config reader
+├── configs/
+│   ├── config.yaml        # Hyperparameters, paths, batch size
+│   └── dataset.yaml       # Dataset splits and data sources
 
-yaml
-Copy
-Edit
+
 
 ---
 
