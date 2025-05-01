@@ -1,0 +1,166 @@
+# config.yaml
+
+# =======================
+# General Settings
+# =======================
+project_name: "UIGO"                      # Name of the project
+log_dir: "./logs"                         # Directory where logs will be saved
+checkpoint_dir: "./checkpoints"           # Directory for storing model checkpoints
+save_checkpoints: true                    # Whether to save model checkpoints during training
+checkpoint_frequency: 5                   # Save checkpoint every 5 epochs
+tensorboard: true                         # Enable TensorBoard for visualizations
+
+# =======================
+# Hyperparameters
+# =======================
+hyperparameters:
+  batch_size: 32                          # Number of samples per batch
+  learning_rate: 0.001                    # Initial learning rate
+  weight_decay: 0.0001                    # Weight decay for L2 regularization
+  momentum: 0.9                           # Momentum for optimizer
+  num_epochs: 50                          # Number of epochs for training
+  early_stopping_patience: 10             # Epochs to wait before early stopping if no improvement
+  mixed_precision_training: true          # Enable mixed precision training (float16)
+  use_pretrained: true                    # Whether to use pretrained weights
+  freeze_layers: true                     # Whether to freeze layers during fine-tuning
+  pretrained_model: "InceptionV3"         # Pretrained model architecture (e.g., InceptionV3, ResNet)
+
+# =======================
+# Data Configuration
+# =======================
+dataset:
+  data_dir: "./data"                      # Directory containing raw data
+  raw_data_dir: "./data/raw"              # Raw data directory (original medical images)
+  processed_data_dir: "./data/processed"  # Processed data directory (resized, normalized)
+  augmentation:
+    contrast_factor: 0.2                  # Factor for adjusting contrast
+    brightness_factor: 0.2                # Factor for adjusting brightness
+    rotation_range: 30                    # Max degree of rotation for augmentation
+    horizontal_flip: true                 # Whether to apply horizontal flip
+    vertical_flip: false                  # Whether to apply vertical flip
+    shear_range: 0.2                      # Shear range for augmentation
+
+# =======================
+# Data Sampling
+# =======================
+sampling:
+  stratified: true                        # Enable stratified sampling for imbalanced data
+  oversample_minority_class: true         # Whether to oversample the minority class
+
+# =======================
+# Model Configuration
+# =======================
+model:
+  use_separable_convs: true                # Use depthwise separable convolutions (for efficiency)
+  batch_norm: true                         # Whether to use batch normalization
+  residual_connections: true               # Whether to use residual connections in the network
+  use_attention: true                      # Whether to use attention mechanisms
+  num_classes: 3                           # Number of output classes (e.g., for multi-class segmentation)
+  input_channels: 1                        # Number of input channels (e.g., 1 for grayscale)
+
+# =======================
+# Optimization & Schedulers
+# =======================
+optimization:
+  optimizer: "adam"                        # Optimizer to use ('adam', 'sgd', etc.)
+  learning_rate_schedule: "cosine"         # Learning rate schedule (options: 'linear', 'cosine', 'exponential')
+  warmup_epochs: 5                         # Number of epochs for learning rate warmup
+  warmup_factor: 0.1                       # Factor to scale the learning rate during warmup
+  l2_reg_strength: 0.0001                  # L2 regularization strength
+  dropout_rate: 0.5                        # Dropout rate to prevent overfitting
+
+# =======================
+# Evaluation Metrics & Logging
+# =======================
+evaluation:
+  metrics:
+    - "accuracy"
+    - "iou"
+    - "dice"
+    - "f1_score"
+    - "precision"
+    - "recall"
+  log_metrics: true                        # Log evaluation metrics during training
+  save_predictions: true                   # Save model predictions after evaluation
+  save_masks: true                         # Save masks on final evaluation
+
+# =======================
+# Cross-Validation Configuration
+# =======================
+cross_validation:
+  k_folds: 5                              # Number of folds for cross-validation
+  shuffle: true                           # Whether to shuffle data before splitting into folds
+  random_seed: 42                         # Seed for reproducibility
+  log_fold_results: true                   # Log results for each fold
+
+# =======================
+# Regularization Techniques
+# =======================
+regularization:
+  l2_reg_strength: 0.0001                  # L2 regularization strength for optimizer
+  dropout_rate: 0.5                        # Dropout rate for regularization
+
+# =======================
+# Logging and Checkpoints Configuration
+# =======================
+logging:
+  log_dir: "./logs"                        # Directory where logs will be saved
+  tensorboard: true                        # Enable tensorboard for visualizations
+  save_checkpoints: true                   # Save model checkpoints during training
+  checkpoint_dir: "./checkpoints"          # Directory to store checkpoints
+  checkpoint_frequency: 5                  # Save checkpoint every 5 epochs
+
+# =======================
+# Pretrained Models Configuration
+# =======================
+pretrained:
+  use_pretrained: true                     # Whether to use pre-trained weights or not
+  pretrained_model: "InceptionV3"          # Pre-trained model architecture (e.g., InceptionV3, ResNet)
+  freeze_layers: true                      # Freeze the layers (only use for fine-tuning)
+
+# =======================
+# Hyperparameter Search (optional)
+# =======================
+hyperparameter_search:
+  search_type: "grid"                      # Options: 'grid', 'random', 'bayesian'
+  search_space:
+    learning_rate:
+      - 0.0001
+      - 0.001
+      - 0.01
+    batch_size:
+      - 16
+      - 32
+      - 64
+
+# =======================
+# Mixed Precision Training (for performance)
+# =======================
+mixed_precision_training: true             # Enable mixed precision training (float16)
+
+# =======================
+# Dataset Split and Paths
+# =======================
+dataset_split:
+  train: 0.7                                # 70% of the data for training
+  validation: 0.2                           # 20% for validation
+  test: 0.1                                 # 10% for testing
+
+# =======================
+# Configuration for Logging and Checkpoints
+# =======================
+checkpoint_frequency: 5                    # Save model checkpoints every 5 epochs
+
+# =======================
+# Configuration File Paths
+# =======================
+paths:
+  config: "./configs/config.yaml"          # Path to the main configuration file
+  dataset: "./configs/dataset.yaml"        # Path to the dataset split configuration file
+
+# =======================
+# Additional Settings for Testing and Prediction
+# =======================
+test_mode: false                           # Whether to run in test mode (only evaluation)
+predict_mode: true                         # Whether to use the model for prediction after training
+prediction_output_dir: "./predictions"     # Directory to store model predictions
