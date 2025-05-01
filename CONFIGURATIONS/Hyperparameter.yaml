@@ -1,0 +1,36 @@
+# hyperparameters.yaml
+model_config:
+  dropout_rate: 0.5                  # Dropout rate for regularization
+  l2_regularization: 0.0001          # L2 regularization strength
+  num_layers: 5                      # Number of layers in the model
+  layer_config:
+    - type: "conv"                   # Layer type: convolutional
+      filters: 64                     # Number of filters
+      kernel_size: 3x3                # Kernel size for convolutions
+      activation: "relu"              # Activation function for this layer
+    - type: "conv"
+      filters: 128
+      kernel_size: 3x3
+      activation: "relu"
+    - type: "dense"                   # Fully connected layer
+      units: 256
+      activation: "relu"
+    - type: "dropout"                 # Dropout layer
+      rate: 0.5
+    - type: "dense"                   # Output layer
+      units: 2                        # Number of classes
+      activation: "softmax"
+
+training_config:
+  early_stopping: true                # Whether to use early stopping
+  patience: 5                         # Number of epochs to wait before early stopping
+  batch_size: 32                      # Batch size for training
+  epochs: 50                          # Number of training epochs
+  learning_rate: 0.001                # Learning rate for the optimizer
+  momentum: 0.9                       # Momentum for SGD optimizer
+  gradient_clip_value: 5.0            # Gradient clipping value to avoid exploding gradients
+
+data_config:
+  input_size: [128, 128, 3]           # Input image size (height, width, channels)
+  augmentations_enabled: true          # Whether to apply data augmentations
+  dataset_source: "./data/images"     # Path to the dataset directory
