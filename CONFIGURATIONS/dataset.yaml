@@ -1,0 +1,24 @@
+# dataset.yaml
+paths:
+  train_dir: "./data/train"         # Path to the training dataset directory
+  val_dir: "./data/validation"      # Path to the validation dataset directory
+  test_dir: "./data/test"           # Path to the test dataset directory
+
+splits:
+  train_percentage: 80              # Percentage of data used for training
+  val_percentage: 20                # Percentage of data used for validation
+  test_percentage: 20               # Percentage of data used for testing
+
+augmentation:
+  rotation_range: 20                # Max degree of rotation for augmentation
+  width_shift_range: 0.2            # Max width shift for augmentation
+  height_shift_range: 0.2           # Max height shift for augmentation
+  shear_range: 0.2                 # Shear range for augmentation
+  zoom_range: 0.2                  # Zoom range for augmentation
+  horizontal_flip: true             # Apply horizontal flip
+  vertical_flip: false              # Apply vertical flip
+
+labels:
+  class_names:
+    - "class_1"
+    - "class_2"
